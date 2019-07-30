@@ -39,12 +39,19 @@ interface Path {
   providedIn: 'root'
 })
 export class PostgrestService {
+  // given by user
+  url: string;
+  auth: string;
+  // from API
   host: string;
   basePath: string;
   paths: Path[];
   definitions: Definition[];
   parameters: Parameter[];
-  constructor(data: any) {
+  // constructor
+  constructor(url: string, auth: string, data: any) {
+    this.url = url;
+    this.auth = auth;
     this.host = data.host;
     this.basePath = data.basePath;
     // definitions

@@ -9,7 +9,8 @@ import { AppService } from './app.service';
 export class AppComponent {
   constructor(private appService: AppService) { }
   title = 'postgrest-admin';
-  ngOnInit() {
-    this.appService.addDb('http://192.168.99.100:3000/');
+
+  addDb(form) {
+    this.appService.addDb(form.form.value.url, form.form.value.auth);
   }
 }
