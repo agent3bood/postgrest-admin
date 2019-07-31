@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppService } from './app.service';
+import {Path} from './services/postgrest.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,15 @@ export class AppComponent {
   title = 'postgrest-admin';
 
   addDb(form) {
-    this.appService.addDb(form.form.value.url, form.form.value.auth);
+    this.appService.addDb(form.form.value.url.replace(/\/$/, ''), form.form.value.auth);
+  }
+  selectPath(path: Path) {
+    this.appService.selectedPath = path;
+  }
+  getSelectedPathData() {
+    this.appService.selectedPath.get.do()
+      .subscribe((responseData: any) => {
+        this.appService.selectedPath.get.data = responseData;
+    });
   }
 }

@@ -2,6 +2,7 @@
   <h1 class="text-center" >
     Welcome to {{ title }}!
   </h1>
+<!-- add db form -->
   <form #newDbForm="ngForm" (ngSubmit)="addDb(newDbForm)" >
     <div class="form-row">
       <div class="form-group col-5">
@@ -15,4 +16,60 @@
       </div>
     </div>
   </form>
+<!-- paths list -->
+  <div *ngIf="appService.selectedDb">
+    <label>Paths:</label>
+    <button
+      *ngFor="let path of appService.selectedDb.paths"
+      (click)="selectPath(path)"
+      class="btn btn-primary"
+      [class.active]="appService.selectedPath && appService.selectedPath.name === path.name"
+    >
+      {{path.name}}
+    </button>
+  </div>
+<!-- selected path parameters -->
+  <div *ngIf="appService.selectedPath">
+    <div *ngFor="let method of appService.selectedPath.methods">
+      <div *ngIf="method.method === 'get'">
+        <div>
+          <label>Parameters:</label>
+        </div>
+        <div *ngFor="let parameter of method.parameters">
+          <div class="row">
+            <label class="col-3" >{{parameter.name}}</label>
+            <input [(ngModel)]="parameter.value" class="col-6" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- fetch data button -->
+    <div>
+      <button class="btm btn-primary" (click)="getSelectedPathData()">
+        get()
+      </button>
+    </div>
+    <!-- display data -->
+    <div *ngIf="appService.selectedPath.get.data">
+      <table class="table">
+        <thead>
+          <tr>
+            <th
+              *ngFor="let property of appService.selectedPath.get.responses[0].schema.properties"
+              class="col"
+            >
+              {{property.name}}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of appService.selectedPath.get.data">
+            <th *ngFor="let property of appService.selectedPath.get.responses[0].schema.properties" >
+              {{row[property.name]}}
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
