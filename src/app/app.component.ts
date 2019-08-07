@@ -18,9 +18,9 @@ export class AppComponent {
     this.appService.selectedPath = path;
   }
   getSelectedPathData() {
-    this.appService.selectedPath.get.do()
-      .subscribe((responseData: any) => {
-        this.appService.selectedPath.get.data = responseData;
-    });
+    this.appService.selectedPath.get.do();
+    //   .subscribe((responseData: any) => {
+    //     this.appService.selectedPath.get.data = responseData;
+    // });
   }
 }

@@ -34,7 +34,7 @@ export interface Method {
   parameters: Parameter[];
   responses: Response[];
   data: any[];
-  do(): Observable<any>;
+  do(): any;
 }
 export interface Path {
   name: string;
@@ -152,7 +152,17 @@ export class PostgrestService {
                     })
                   : [],
                 data: null,
-                do: () => http.get(this.url + path)
+                do: () => {
+                  const params = {};
+                  this.paths[0].get.parameters.map(i => {
+                    if (i.in === 'query' && i.value) {
+                      params[i.name] = 'eq.' + i.value;
+                    }
+                  });
+                  http.get(this.url + path, {params}).subscribe((responseData: any) => {
+                    this.paths[0].get.data = responseData;
+                  });
+                }
               });
             }
           }
