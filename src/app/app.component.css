@@ -1,0 +1,9 @@
+.sidebar {
+  background-color: var(--color-primary-0);
+  height: 100px;
+}
+
+.content {
+  background-color: var(--color-primary-0);
+  height: 100px;
+}

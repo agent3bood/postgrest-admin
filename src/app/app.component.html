@@ -1,21 +1,31 @@
 <div class="container-fluid">
   <h1 class="text-center" >
-    Welcome to {{ title }}!
+    Welcome to {{ title }}
   </h1>
-<!-- add db form -->
-  <form #newDbForm="ngForm" (ngSubmit)="addDb(newDbForm)" >
-    <div class="form-row">
-      <div class="form-group col-5">
-        <input name="url" ngModel required class="form-control" placeholder="API url" />
-      </div>
-      <div class="form-group col-5">
-        <input name="auth" ngModel class="form-control" placeholder="API auth" />
-      </div>
-      <div class="form-group col-2">
-        <button type="submit" class="btn btn-primary">Connect</button>
-      </div>
+  <div class="row justify-content-around">
+    <div class="row col-12">
+      <!-- add db form -->
+      <form #newDbForm="ngForm" (ngSubmit)="addDb(newDbForm)" >
+        <div class="form-row">
+          <div class="form-group col-5">
+            <input name="url" ngModel required class="form-control" placeholder="API url" />
+          </div>
+          <div class="form-group col-5">
+            <input name="auth" ngModel class="form-control" placeholder="API auth" />
+          </div>
+          <div class="form-group col-2">
+            <button type="submit" class="btn btn-primary">Connect</button>
+          </div>
+        </div>
+      </form>
     </div>
-  </form>
+    <div class="row col-12">
+      <div id="sidebar" class="col-4 sidebar">
+        <app-dbs-list [dbs]="appService.dbs" (selectDb)="onSelectDb($event)"></app-dbs-list>
+      </div>
+      <div id="content" class="col-7 content"></div>
+    </div>
+  </div>
 <!-- paths list -->
   <div *ngIf="appService.selectedDb">
     <label>Paths:</label>

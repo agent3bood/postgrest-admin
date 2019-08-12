@@ -1,0 +1,5 @@
+<div *ngIf="dbs">
+ <ul *ngFor="let db of dbs">
+   <app-dbs-list-item [db]="db" (click)="onSelectDb(db)"></app-dbs-list-item>
+ </ul>
+</div>

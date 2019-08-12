@@ -1,1 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary-0: #fff6f6;
+  --color-primary-1: #ffc4c4;
+  --color-primary-2: #ffd9d9;
+  --color-primary-3: #ffecec;
+  --color-primary-4: #e9d3d3;
+}
+
+/* https://paletton.com/#uid=7000u0k18O17rzm4NFO2nx-35tf */
+/*.color-primary-0 {*/
+/*  color: #fff6f6;*/
+/*} !* Main Primary color *!*/
+/*.color-primary-1 {*/
+/*  color: #ffc4c4;*/
+/*}*/
+/*.color-primary-2 {*/
+/*  color: #ffd9d9;*/
+/*}*/
+/*.color-primary-3 {*/
+/*  color: #ffecec;*/
+/*}*/
+/*.color-primary-4 {*/
+/*  color: #e9d3d3;*/
+/*}*/
+
+/*.color-secondary-1-0 {*/
+/*  color: #fffaf6;*/
+/*} !* Main Secondary color (1) *!*/
+/*.color-secondary-1-1 {*/
+/*  color: #ffdfc4;*/
+/*}*/
+/*.color-secondary-1-2 {*/
+/*  color: #ffead9;*/
+/*}*/
+/*.color-secondary-1-3 {*/
+/*  color: #fff5ec;*/
+/*}*/
+/*.color-secondary-1-4 {*/
+/*  color: #e9ddd3;*/
+/*}*/
+
+/*.color-secondary-2-0 {*/
+/*  color: #ced6d6;*/
+/*} !* Main Secondary color (2) *!*/
+/*.color-secondary-2-1 {*/
+/*  color: #7ea4a4;*/
+/*}*/
+/*.color-secondary-2-2 {*/
+/*  color: #9fbbbb;*/
+/*}*/
+/*.color-secondary-2-3 {*/
+/*  color: #929e9e;*/
+/*}*/
+/*.color-secondary-2-4 {*/
+/*  color: #7e8c8c;*/
+/*}*/
+
+/*.color-complement-0 {*/
+/*  color: #e2eae2;*/
+/*} !* Main Complement color *!*/
+/*.color-complement-1 {*/
+/*  color: #a1d1a1;*/
+/*}*/
+/*.color-complement-2 {*/
+/*  color: #bcddbc;*/
+/*}*/
+/*.color-complement-3 {*/
+/*  color: #bfcebf;*/
+/*}*/
+/*.color-complement-4 {*/
+/*  color: #a8baa8;*/
+/*}*/

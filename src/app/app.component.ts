@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AppService } from './app.service';
-import {Path} from './services/postgrest.service';
+import {Path, PostgrestService} from './services/postgrest.service';
 
 @Component({
   selector: 'app-root',
@@ -22,5 +22,9 @@ export class AppComponent {
     //   .subscribe((responseData: any) => {
     //     this.appService.selectedPath.get.data = responseData;
     // });
+  }
+  onSelectDb(db: PostgrestService) {
+    this.appService.selectedDb = db;
+    this.appService.selectedPath = null;
   }
 }
