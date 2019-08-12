@@ -21,23 +21,33 @@
     </div>
     <div class="row col-12">
       <div id="sidebar" class="col-4 sidebar">
-        <app-dbs-list [dbs]="appService.dbs" (selectDb)="onSelectDb($event)"></app-dbs-list>
+        <app-dbs-list
+          [dbs]="appService.dbs"
+          (selectDb)="onSelectDb($event)">
+        </app-dbs-list>
+        <app-paths-list
+          *ngIf="appService.selectedDb"
+          [paths]="appService.selectedDb.paths"
+          [selectedPath]="appService.selectedPath"
+          (selectPath)="onSelectPath($event)"
+        >
+        </app-paths-list>
       </div>
       <div id="content" class="col-7 content"></div>
     </div>
   </div>
 <!-- paths list -->
-  <div *ngIf="appService.selectedDb">
-    <label>Paths:</label>
-    <button
-      *ngFor="let path of appService.selectedDb.paths"
-      (click)="selectPath(path)"
-      class="btn btn-primary"
-      [class.active]="appService.selectedPath && appService.selectedPath.name === path.name"
-    >
-      {{path.name}}
-    </button>
-  </div>
+<!--  <div *ngIf="appService.selectedDb">-->
+<!--    <label>Paths:</label>-->
+<!--    <button-->
+<!--      *ngFor="let path of appService.selectedDb.paths"-->
+<!--      (click)="selectPath(path)"-->
+<!--      class="btn btn-primary"-->
+<!--      [class.active]="appService.selectedPath && appService.selectedPath.name === path.name"-->
+<!--    >-->
+<!--      {{path.name}}-->
+<!--    </button>-->
+<!--  </div>-->
 <!-- selected path parameters -->
   <div *ngIf="appService.selectedPath">
     <div *ngFor="let method of appService.selectedPath.methods">

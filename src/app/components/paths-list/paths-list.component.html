@@ -1,0 +1,6 @@
+<div *ngIf="paths">
+  paths
+  <ul *ngFor="let path of paths">
+    <app-paths-list-item [path]="path" (click)="onSelectPath(path)"></app-paths-list-item>
+  </ul>
+</div>

@@ -14,9 +14,9 @@ export class AppComponent {
   addDb(form) {
     this.appService.addDb(form.form.value.url.replace(/\/$/, ''), form.form.value.auth);
   }
-  selectPath(path: Path) {
-    this.appService.selectedPath = path;
-  }
+  // selectPath(path: Path) {
+  //   this.appService.selectedPath = path;
+  // }
   getSelectedPathData() {
     this.appService.selectedPath.get.do();
     //   .subscribe((responseData: any) => {
@@ -26,5 +26,8 @@ export class AppComponent {
   onSelectDb(db: PostgrestService) {
     this.appService.selectedDb = db;
     this.appService.selectedPath = null;
+  }
+  onSelectPath(path: Path) {
+    this.appService.selectedPath = path;
   }
 }
