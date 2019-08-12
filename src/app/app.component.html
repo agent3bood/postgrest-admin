@@ -1,9 +1,13 @@
 <div class="container-fluid">
-  <h1 class="text-center" >
-    Welcome to {{ title }}
-  </h1>
-  <div class="row justify-content-around">
-    <div class="row col-12">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center" >
+        Welcome to {{ title }}
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
       <!-- add db form -->
       <form #newDbForm="ngForm" (ngSubmit)="addDb(newDbForm)" >
         <div class="form-row">
@@ -19,8 +23,11 @@
         </div>
       </form>
     </div>
-    <div class="row col-12">
-      <div id="sidebar" class="col-4 sidebar">
+  </div>
+<!--  -->
+  <div class="row">
+    <div class="col-3">
+      <div id="app-sidebar" class="app-sidebar">
         <app-dbs-list
           *ngIf="appService.dbs"
           [dbs]="appService.dbs"
@@ -34,13 +41,13 @@
         >
         </app-paths-list>
       </div>
-      <div id="content" class="col-7 content">
-        <div class="row col-12">
-          <app-parameters-list
-            *ngIf="appService.selectedPath"
-            [parameters]="appService.selectedPath.get.parameters">
-          </app-parameters-list>
-        </div>
+    </div>
+    <div class="col-9">
+      <div id="app-content" class="app-content">
+        <app-parameters-list
+          *ngIf="appService.selectedPath"
+          [parameters]="appService.selectedPath.get.parameters">
+        </app-parameters-list>
       </div>
     </div>
   </div>
