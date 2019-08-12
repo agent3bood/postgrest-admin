@@ -10,6 +10,7 @@ import { PathsListItemComponent } from './components/paths-list-item/paths-list-
 import { PathsListComponent } from './components/paths-list/paths-list.component';
 import { ParametersListComponent } from './components/parameters-list/parameters-list.component';
 import { ParametersListItemComponent } from './components/parameters-list-item/parameters-list-item.component';
+import { TableViewComponent } from './components/table-view/table-view.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ParametersListItemComponent } from './components/parameters-list-item/p
     PathsListItemComponent,
     PathsListComponent,
     ParametersListComponent,
-    ParametersListItemComponent
+    ParametersListItemComponent,
+    TableViewComponent
   ],
   imports: [
     BrowserModule,

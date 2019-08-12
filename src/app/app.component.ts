@@ -29,5 +29,6 @@ export class AppComponent {
   }
   onSelectPath(path: Path) {
     this.appService.selectedPath = path;
+    this.appService.selectedPath.get.do();
   }
 }

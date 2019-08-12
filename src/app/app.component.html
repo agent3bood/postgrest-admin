@@ -48,37 +48,11 @@
           *ngIf="appService.selectedPath"
           [parameters]="appService.selectedPath.get.parameters">
         </app-parameters-list>
+        <app-table-view
+          *ngIf="appService.selectedPath"
+          [path]="appService.selectedPath"
+        ></app-table-view>
       </div>
-    </div>
-  </div>
-  <div *ngIf="appService.selectedPath">
-    <!-- fetch data button -->
-    <div>
-      <button class="btm btn-primary" (click)="getSelectedPathData()">
-        get()
-      </button>
-    </div>
-    <!-- display data -->
-    <div *ngIf="appService.selectedPath.get.data">
-      <table class="table">
-        <thead>
-          <tr>
-            <th
-              *ngFor="let property of appService.selectedPath.get.responses[0].schema.properties"
-              class="col"
-            >
-              {{property.name}}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let row of appService.selectedPath.get.data">
-            <th *ngFor="let property of appService.selectedPath.get.responses[0].schema.properties" >
-              {{row[property.name]}}
-            </th>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </div>

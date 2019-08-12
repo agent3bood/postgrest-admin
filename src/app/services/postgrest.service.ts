@@ -122,6 +122,7 @@ export class PostgrestService {
           if (path === '/') {
             continue;
           }
+          const name = path.replace('/', '');
           const methods: Method[] = [];
           for (const method in data.paths[path]) {
             if (data.paths[path].hasOwnProperty(method)) {
@@ -160,7 +161,7 @@ export class PostgrestService {
                     }
                   });
                   http.get(this.url + path, {params}).subscribe((responseData: any) => {
-                    this.paths[0].get.data = responseData;
+                    this.paths.find(i => i.name === name).get.data = responseData;
                   });
                 }
               });
@@ -168,7 +169,7 @@ export class PostgrestService {
           }
           this.paths.push({
             methods,
-            name: path.replace('/', ''),
+            name,
             get: methods.find(i => i.method === 'get')
           });
         }
