@@ -1,0 +1,6 @@
+<div *ngIf="parameters">
+  <app-parameters-list-item
+    *ngFor="let parameter of parameters"
+  [parameter]="parameter">
+  </app-parameters-list-item>
+</div>

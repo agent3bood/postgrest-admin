@@ -8,6 +8,8 @@ import { DbsListComponent } from './components/dbs-list/dbs-list.component';
 import { DbsListItemComponent } from './components/dbs-list-item/dbs-list-item.component';
 import { PathsListItemComponent } from './components/paths-list-item/paths-list-item.component';
 import { PathsListComponent } from './components/paths-list/paths-list.component';
+import { ParametersListComponent } from './components/parameters-list/parameters-list.component';
+import { ParametersListItemComponent } from './components/parameters-list-item/parameters-list-item.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { PathsListComponent } from './components/paths-list/paths-list.component
     DbsListComponent,
     DbsListItemComponent,
     PathsListItemComponent,
-    PathsListComponent
+    PathsListComponent,
+    ParametersListComponent,
+    ParametersListItemComponent
   ],
   imports: [
     BrowserModule,

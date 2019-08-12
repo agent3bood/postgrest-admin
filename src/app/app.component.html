@@ -22,6 +22,7 @@
     <div class="row col-12">
       <div id="sidebar" class="col-4 sidebar">
         <app-dbs-list
+          *ngIf="appService.dbs"
           [dbs]="appService.dbs"
           (selectDb)="onSelectDb($event)">
         </app-dbs-list>
@@ -33,7 +34,14 @@
         >
         </app-paths-list>
       </div>
-      <div id="content" class="col-7 content"></div>
+      <div id="content" class="col-7 content">
+        <div class="row col-12">
+          <app-parameters-list
+            *ngIf="appService.selectedPath"
+            [parameters]="appService.selectedPath.get.parameters">
+          </app-parameters-list>
+        </div>
+      </div>
     </div>
   </div>
 <!-- paths list -->
@@ -50,19 +58,19 @@
 <!--  </div>-->
 <!-- selected path parameters -->
   <div *ngIf="appService.selectedPath">
-    <div *ngFor="let method of appService.selectedPath.methods">
-      <div *ngIf="method.method === 'get'">
-        <div>
-          <label>Parameters:</label>
-        </div>
-        <div *ngFor="let parameter of method.parameters">
-          <div class="row">
-            <label class="col-3" >{{parameter.name}}</label>
-            <input [(ngModel)]="parameter.value" class="col-6" />
-          </div>
-        </div>
-      </div>
-    </div>
+<!--    <div *ngFor="let method of appService.selectedPath.methods">-->
+<!--      <div *ngIf="method.method === 'get'">-->
+<!--        <div>-->
+<!--          <label>Parameters:</label>-->
+<!--        </div>-->
+<!--        <div *ngFor="let parameter of method.parameters">-->
+<!--          <div class="row">-->
+<!--            <label class="col-3" >{{parameter.name}}</label>-->
+<!--            <input [(ngModel)]="parameter.value" class="col-6" />-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
     <!-- fetch data button -->
     <div>
       <button class="btm btn-primary" (click)="getSelectedPathData()">
