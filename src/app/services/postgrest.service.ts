@@ -155,7 +155,7 @@ export class PostgrestService {
                 data: null,
                 do: () => {
                   const params = {};
-                  this.paths[0].get.parameters.map(i => {
+                  this.paths.find(i => i.name === name).get.parameters.map(i => {
                     if (i.in === 'query' && i.value) {
                       params[i.name] = 'eq.' + i.value;
                     }
