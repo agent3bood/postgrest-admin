@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs';
 
+export interface Operator {
+  abbreviation: string;
+  meaning: string;
+}
 export interface Parameter {
   ref: string;
   name: string;
@@ -12,6 +15,7 @@ export interface Parameter {
   schema?: Definition; // definition
   enum?: string[]; // possible values if provided
   value?: string; // value used in the request
+  operator?: Operator; // operator fo the value
 }
 export interface DefinitionProperty {
   name: string;
@@ -157,7 +161,7 @@ export class PostgrestService {
                   const params = {};
                   this.paths.find(i => i.name === name).get.parameters.map(i => {
                     if (i.in === 'query' && i.value) {
-                      params[i.name] = 'eq.' + i.value;
+                      params[i.name] = i.operator.abbreviation + '.' + i.value;
                     }
                   });
                   http.get(this.url + path, {params}).subscribe((responseData: any) => {
