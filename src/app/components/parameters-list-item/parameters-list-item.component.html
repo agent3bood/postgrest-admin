@@ -41,6 +41,13 @@
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownEnumButton">
       <a
+        class="dropdown-item"
+        href="#"
+        (click)="changeParameterEnum()"
+      >
+        <p>{{ "" }}</p>
+      </a>
+      <a
         *ngFor="let enum of parameter.enum; let index = index"
         class="dropdown-item"
         href="#"

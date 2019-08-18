@@ -110,8 +110,12 @@ export class ParametersListItemComponent implements OnInit {
   changeOperator(index) {
     this.parameter.operator = this.operators[index];
   }
-  changeParameterEnum(index) {
-    this.parameter.value = this.parameter.enum[index];
+  changeParameterEnum(index?) {
+    if (index !== undefined && this.parameter.enum[index]) {
+      this.parameter.value = this.parameter.enum[index];
+    } else {
+      this.parameter.value = '';
+    }
   }
 
 }
