@@ -1,28 +1,30 @@
 <div *ngIf="parameter">
   <label class="col-3" >{{parameter.name}}</label>
-  <button
-    class="btn btn-secondary dropdown-toggle"
-    type="button"
-    id="dropdownMenuButton"
-    data-toggle="dropdown"
-    aria-haspopup="true"
-    aria-expanded="false"
-  >
-    {{ parameter.operator.abbreviation }}
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a
-      *ngFor="let operator of operators; let index = index"
-      class="dropdown-item"
-      href="#"
-      (click)="changeOperator(index)"
+  <span *ngIf="parameter.in === 'query'" >
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
     >
-      {{ operator.abbreviation }}
-    </a>
-  </div>
+      {{ parameter.operator.abbreviation }}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a
+        *ngFor="let operator of operators; let index = index"
+        class="dropdown-item"
+        href="#"
+        (click)="changeOperator(index)"
+      >
+        {{ operator.abbreviation }}
+      </a>
+    </div>
+  </span>
   <input
     *ngIf="!parameter.enum"
-    [placeholder]="parameter.operator.meaning"
+    [placeholder]="parameter.operator ? parameter.operator.meaning : ''"
     [(ngModel)]="parameter.value"
     class="col-6"
   />

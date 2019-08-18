@@ -102,7 +102,7 @@ export class ParametersListItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (!this.parameter.operator) {
+    if (!this.parameter.operator && this.parameter.in === 'query' ) {
       this.parameter.operator = this.operators[0];
     }
   }
