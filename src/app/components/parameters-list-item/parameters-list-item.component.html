@@ -21,8 +21,31 @@
     </a>
   </div>
   <input
+    *ngIf="!parameter.enum"
     [placeholder]="parameter.operator.meaning"
     [(ngModel)]="parameter.value"
     class="col-6"
   />
+  <span *ngIf="parameter.enum">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownEnumButton"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      {{ parameter.value }}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownEnumButton">
+      <a
+        *ngFor="let enum of parameter.enum; let index = index"
+        class="dropdown-item"
+        href="#"
+        (click)="changeParameterEnum(index)"
+      >
+        {{ enum }}
+      </a>
+    </div>
+  </span>
 </div>
