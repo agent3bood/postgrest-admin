@@ -10,7 +10,7 @@ export interface Parameter {
   name: string;
   description: string;
   required: boolean;
-  in: string; // header || body
+  in: string; // header || query
   type: string;
   schema?: Definition; // definition
   enum?: string[]; // possible values if provided

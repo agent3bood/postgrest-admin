@@ -1,6 +1,42 @@
-<div *ngIf="parameters">
-  <app-parameters-list-item
-    *ngFor="let parameter of parameters"
-  [parameter]="parameter">
-  </app-parameters-list-item>
+<div>
+  <div *ngIf="queryParameters">
+    <p>
+      <a
+        class="btn btn-primary"
+        data-toggle="collapse"
+        href="#collapseQueryParameters"
+        role="button"
+        aria-expanded="false"
+        aria-controls="collapseQueryParameters"
+      >
+        Query parameters
+      </a>
+    </p>
+    <div class="collapse" id="collapseQueryParameters">
+      <app-parameters-list-item
+        *ngFor="let parameter of queryParameters"
+        [parameter]="parameter">
+      </app-parameters-list-item>
+    </div>
+  </div>
+  <div *ngIf="headerParameters">
+    <p>
+      <a
+        class="btn btn-primary"
+        data-toggle="collapse"
+        href="#collapseHeaderParameters"
+        role="button"
+        aria-expanded="false"
+        aria-controls="collapseHeaderParameters"
+      >
+        Header parameters
+      </a>
+    </p>
+    <div class="collapse" id="collapseHeaderParameters">
+      <app-parameters-list-item
+        *ngFor="let parameter of headerParameters"
+        [parameter]="parameter">
+      </app-parameters-list-item>
+    </div>
+  </div>
 </div>
