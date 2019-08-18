@@ -158,13 +158,16 @@ export class PostgrestService {
                   : [],
                 data: null,
                 do: () => {
+                  const headers = {};
                   const params = {};
                   this.paths.find(i => i.name === name).get.parameters.map(i => {
                     if (i.in === 'query' && i.value) {
                       params[i.name] = i.operator.abbreviation + '.' + i.value;
+                    } else if (i.in === 'header' && i.value) {
+                      headers[i.name] = i.value;
                     }
                   });
-                  http.get(this.url + path, {params}).subscribe((responseData: any) => {
+                  http.get(this.url + path, {headers, params}).subscribe((responseData: any) => {
                     this.paths.find(i => i.name === name).get.data = responseData;
                   });
                 }
