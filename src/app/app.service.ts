@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Path, PostgrestService} from './services/postgrest.service';
+import { HttpClient } from '@angular/common/http';
+import { Path, PostgrestService } from './services/postgrest.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,22 @@ export class AppService {
   selectedDb: PostgrestService = null;
   selectedPath: Path = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   addDb(url: string, auth?: string) {
-    const db = new PostgrestService(url, auth, this.http);
-    this.dbs.push(db);
-    this.selectedDb = this.dbs[this.dbs.length - 1];
+    let index = -1;
+    // find url in this.dbs
+    this.dbs.map((item, idx) => {
+      if (item.url === url) {
+        index = idx;
+      }
+    });
+    if (index > -1) {
+      this.selectedDb = this.dbs[index];
+    } else {
+      const db = new PostgrestService(url, auth, this.http);
+      this.dbs.push(db);
+      this.selectedDb = db;
+    }
   }
-
 }
