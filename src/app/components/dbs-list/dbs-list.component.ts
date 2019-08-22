@@ -9,15 +9,15 @@ import { PostgrestService } from '../../services/postgrest.service';
 
 export class DbsListComponent implements OnInit {
   @Input() dbs: PostgrestService[];
-  @Output() selectDb = new EventEmitter<PostgrestService>();
+  @Output() selectDb = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onSelectDb(db: PostgrestService) {
-    this.selectDb.emit(db);
+  onSelectDb(index: number) {
+    this.selectDb.emit(index);
   }
 
 }

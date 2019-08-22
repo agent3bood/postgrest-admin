@@ -21,11 +21,16 @@ export class AppService {
       }
     });
     if (index > -1) {
-      this.selectedDb = this.dbs[index];
+      this.selectDb(index);
     } else {
       const db = new PostgrestService(url, auth, this.http);
       this.dbs.push(db);
-      this.selectedDb = db;
+      this.selectDb(this.dbs.length - 1);
     }
+  }
+
+  selectDb(index) {
+    this.selectedDb = this.dbs[index];
+    this.selectedDb.fetch();
   }
 }

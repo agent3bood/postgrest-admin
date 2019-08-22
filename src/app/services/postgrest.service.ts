@@ -65,7 +65,10 @@ export class PostgrestService {
     this.http = http;
     this.url = url;
     this.auth = auth;
-    this.http.get(url).subscribe((data: any) => {
+  }
+  // fetch data
+  fetch() {
+    this.http.get(this.url).subscribe((data: any) => {
       this.host = data.host;
       this.basePath = data.basePath;
       // definitions
@@ -80,10 +83,10 @@ export class PostgrestService {
               properties.push({
                 name: property,
                 format:
-                  data.definitions[definition].properties[property].format,
+                data.definitions[definition].properties[property].format,
                 type: data.definitions[definition].properties[property].type,
                 description:
-                  data.definitions[definition].properties[property].description,
+                data.definitions[definition].properties[property].description,
                 required: data.definitions[definition].required.includes(
                   property
                 )
@@ -109,11 +112,11 @@ export class PostgrestService {
             type: data.parameters[parameter].type,
             schema: data.parameters[parameter].schema
               ? this.definitions.find(definition => {
-                  return (
-                    definition.name ===
-                    data.parameters[parameter].schema.$ref.split('/')[2]
-                  );
-                })
+                return (
+                  definition.name ===
+                  data.parameters[parameter].schema.$ref.split('/')[2]
+                );
+              })
               : null,
             enum: data.parameters[parameter].enum
           });
@@ -149,12 +152,12 @@ export class PostgrestService {
                 responses,
                 parameters: data.paths[path][method].parameters
                   ? data.paths[path][method].parameters.map(parameterRef => {
-                      return this.parameters.find(parameter => {
-                        return (
-                          parameter.ref === parameterRef.$ref.split('/')[2]
-                        );
-                      });
-                    })
+                    return this.parameters.find(parameter => {
+                      return (
+                        parameter.ref === parameterRef.$ref.split('/')[2]
+                      );
+                    });
+                  })
                   : [],
                 data: null,
                 do: () => {
@@ -167,7 +170,7 @@ export class PostgrestService {
                       headers[i.name] = i.value;
                     }
                   });
-                  http.get(this.url + path, {headers, params}).subscribe((responseData: any) => {
+                  this.http.get(this.url + path, {headers, params}).subscribe((responseData: any) => {
                     this.paths.find(i => i.name === name).get.data = responseData;
                   });
                 }

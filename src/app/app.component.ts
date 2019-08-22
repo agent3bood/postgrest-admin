@@ -23,8 +23,8 @@ export class AppComponent {
     //     this.appService.selectedPath.get.data = responseData;
     // });
   }
-  onSelectDb(db: PostgrestService) {
-    this.appService.selectedDb = db;
+  onSelectDb(index: number) {
+    this.appService.selectDb(index);
     this.appService.selectedPath = null;
   }
   onSelectPath(path: Path) {
