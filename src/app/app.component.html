@@ -1,58 +1,78 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      <h1 class="text-center" >
-        Welcome to {{ title }}
-      </h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <!-- add db form -->
-      <form #newDbForm="ngForm" (ngSubmit)="addDb(newDbForm)" >
-        <div class="form-row">
-          <div class="form-group col-5">
-            <input name="url" ngModel required class="form-control" placeholder="API url" />
-          </div>
-          <div class="form-group col-5">
-            <input name="auth" ngModel class="form-control" placeholder="API auth" />
-          </div>
-          <div class="form-group col-2">
-            <button type="submit" class="btn btn-primary">Connect</button>
-          </div>
+  <!-- nav -->
+  <nav class="navbar sticky-top navbar-dark bg-dark">
+    <!-- sidebar collapse button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#app-sidebar"
+      aria-controls="app-sidebar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- brand -->
+    <a class="navbar-brand" href="#">{{ title }}</a>
+    <!-- add db form -->
+    <form #newDbForm="ngForm" (ngSubmit)="addDb(newDbForm)" class="form-inline">
+      <div class="form-row">
+        <div class="form-group col-5">
+          <input
+            name="url"
+            ngModel
+            required
+            class="form-control"
+            placeholder="API url"
+          />
         </div>
-      </form>
-    </div>
-  </div>
-<!--  -->
+        <div class="form-group col-5">
+          <input
+            name="auth"
+            ngModel
+            class="form-control"
+            placeholder="API auth"
+          />
+        </div>
+        <div class="form-group col-2">
+          <button type="submit" class="btn btn-primary">Connect</button>
+        </div>
+      </div>
+    </form>
+  </nav>
+  <!-- nav end -->
+  <!-- page -->
   <div class="row">
-    <div class="col-3">
-      <div id="app-sidebar" class="app-sidebar">
-        <app-dbs-list
-          *ngIf="appService.dbs"
-          [dbs]="appService.dbs"
-          (selectDb)="onSelectDb($event)">
-        </app-dbs-list>
-        <app-paths-list
-          *ngIf="appService.selectedDb"
-          [paths]="appService.selectedDb.paths"
-          [selectedPath]="appService.selectedPath"
-          (selectPath)="onSelectPath($event)"
-        >
-        </app-paths-list>
-      </div>
+    <!-- sidebar -->
+    <div id="app-sidebar" class="collapse col-3 bg-light">
+      <app-dbs-list
+        *ngIf="appService.dbs"
+        [dbs]="appService.dbs"
+        (selectDb)="onSelectDb($event)"
+      >
+      </app-dbs-list>
+      <app-paths-list
+        *ngIf="appService.selectedDb"
+        [paths]="appService.selectedDb.paths"
+        [selectedPath]="appService.selectedPath"
+        (selectPath)="onSelectPath($event)"
+      >
+      </app-paths-list>
     </div>
-    <div class="col-9">
-      <div id="app-content" class="app-content">
-        <app-parameters-list
-          *ngIf="appService.selectedPath"
-          [parameters]="appService.selectedPath.get.parameters">
-        </app-parameters-list>
-        <app-table-view
-          *ngIf="appService.selectedPath"
-          [path]="appService.selectedPath"
-        ></app-table-view>
-      </div>
+    <!--  sidebar end  -->
+    <!-- content -->
+    <div id="app-content" class="col bg-light">
+      <app-parameters-list
+        *ngIf="appService.selectedPath"
+        [parameters]="appService.selectedPath.get.parameters"
+      >
+      </app-parameters-list>
+      <app-table-view
+        *ngIf="appService.selectedPath"
+        [path]="appService.selectedPath"
+      ></app-table-view>
     </div>
+    <!--  content end  -->
   </div>
 </div>
